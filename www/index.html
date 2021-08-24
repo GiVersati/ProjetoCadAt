@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <link rel="stylesheet" href="Inicio.css">
+    <script src="jquery-mobile.js"></script>
+    <title>jQuery Mobile</title>
+
+</head>
+
+<body>
+    <div data-role="header" data-theme="b">
+        <h1>INDEX</h1>
+    </div>
+    <a href="#" class="menu-open">Menu de navegação</a>
+
+    <div class="overlay"></div>
+
+    <div class="menu">
+        <a href="#" class="menu-close">&times;</a>
+        <ul>
+            <li><a href="Login.html" target="_blank">Login</a></li>
+            <li><a href="Exibição.html" target="_blank">Exibição</a></li>
+            <!---   <li><a href="#" target="_blank">Exibição</a></li> -->
+
+            <!--- <li><a href="#" target="_blank"></a></li> --->
+            <!---  <li><a href="#" target="_blank"></a></li> --->
+        </ul>
+    </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(function () {
+            var menu_width = 290;
+            var menu = $(".menu");
+            var menu_open = $(".menu-open");
+            var menu_close = $(".menu-close");
+            var overlay = $(".overlay");
+
+            menu_open.click(function (e) {
+                e.preventDefault();
+                menu.css({ "right": "0px" });
+                overlay.css({ "opacity": "1", "width": "100%" });
+            });
+
+            menu_close.click(function (e) {
+                e.preventDefault();
+                menu.css({ "right": "-" + menu_width + "px" });
+                overlay.css({ "opacity": "0", "width": "0" });
+            });
+        });
+
+        /*colocar footer no final da pagina no css*/
+    </script>
+
+<footer>
+    <img src="logo_syspan_sistemas_pb.png" width="240">
+</footer>
+    
+</body>
+
+</html>

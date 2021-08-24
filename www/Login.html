@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <div data-role="page" id="pagina-login">
+
+        <div data-role="header">
+            
+           
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+                <a data-icon="bars" data-iconpos="notext" data-role="button" href="#gaveta1"></a>
+            
+            </div>
+    <main class="container">
+        <h2>Login</h2>
+        <form id="formValidate" name="conectar" method="post" onsubmit="entrar(event)" action="">
+            <div class="input-field">
+                <input type="text" name="username" id="username" placeholder="Enter Your Username" required>
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+                <div class="underline"></div>
+            </div>
+            <p id="warning"> </p>
+            <input type="submit" value="Enviar">
+            <br>
+            <button onclick="window.location.href='index.html'">Retorne para o Index</button>
+       
+
+        </form>
+
+
+
+
+        </div>
+        </div>
+        </div>
+    </main>
+</body>
+    <script>
+    function entrar(event){
+        event.preventDefault() /*essa linha esta pegando o evento e impedindo que realize o comportamente padrão de recarregar a pagina quando é enviado*/
+        var username=document.forms["conectar"]["username"].value /* document=isto esta pegando o documento forms=isto esta pegando os formularios do documento(nome do form e por ultimo o campo que eu quero pegar) */
+        var password=document.forms["conectar"]["password"].value /*armazena o valor em uma variavel*/
+        if (username==="teste1" && password==="12345") {  /*login */
+            window.location.href = "Calculo.html" /*locar para outra pagina*/
+
+        } else {
+            
+            document.getElementById("warning").textContent = "O Login ou a senha estão errados!" /*Pega o elemento pelo id para exibir uma mensagem no caso o elemento da tag <p>*/
+
+
+        }
+    
+                    
+        
+    }
+
+    </script>
+
+
+</html>

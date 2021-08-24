@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <link rel="stylesheet" href="Caculado.css">
+    <script src="jquery-mobile.js"></script>
+    <title>jQuery Mobile</title>
+
+</head>
+
+<body>
+
+</head>
+
+<body>
+    <div data-role="header" data-theme="b">
+        <h1>Cadastrar</h1>
+    </div>
+ <main class="container">
+    <form id="formValidate" name="formValidate" method="post" onsubmit="preencherOleo(event)" action="">
+        <div class="input-field">
+            <input type="text" name="km" id="km" placeholder="KM.">
+            <div class="underline"></div>
+        </div>
+        <br>
+        <div class="input-field">
+            <input type="text" name="placa" id="placa" placeholder="Placa" autofocus required>
+            <div class="underline"></div>
+        </div>
+        <br>
+        <div class="input-field">
+            <input type="text" name="oleo" id="oleo" placeholder="Óleo" autofocus required>
+            <div class="underline"></div>
+        </div>
+        <br>
+        <p id="resultado"></p>
+        <input type="submit" value="Enviar">
+        <button onclick="window.location.href='index.html'">Retorne para o Index</button>
+        
+</form>
+
+</main>
+
+</body>
+<script>
+    var preencherOleo = async (event) => {
+      event.preventDefault();
+      fetch("https://www.syspan.com.br/services/dados_veiculos.php")
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          } else {
+            throw new Error("Ops! Houve um erro em nosso servidor.");
+          }
+        })
+        .then((response) => {
+          var form = document.forms["formValidate"];
+          response.formValidate.map((e) => {
+            console.log(e.placa, e.placa == form.placa.value);
+            console.log(e.km, e.km == form.km.value);
+            if (e.placa === form.placa.value && e.km === form.km.value) {
+              console.log("PASSOU");
+              document.getElementById("oleo").value = e.km_troca_oleo;
+            }
+          });
+          // ...
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+  </script>
+
+ <script>  
+    /*function executar(event) {
+        event.preventDefault()
+        var distancia = parseFloat(document.getElementById('distancia').value);
+        var gasolina = parseFloat(document.getElementById('gasolina').value);
+        var resultado = (distancia / gasolina);
+        if (distancia==="resultado" && gasolina==="resultado")   {
+            window.location.href = "index.html" /*locar para outra pagina*/
+
+    
+    
+        /*}else {
+       document.getElementById("resultado").textContent = "O resultado da Km é " +parseFloat(resultado); /*Pega o elemento pelo id para exibir uma mensagem no caso o elemento da tag <p>*/
+        /*exibe um resultado(value) dentro da string convertida*/
+        /*sem necessidade de calculo é apenas para inserção no banco */
+        /*efetuar linkagem pela lista na exibição*/
+        /*css do calculo e exibição*/
+        /*lista dados do banco*/
+</script> 
+
+
+
+<footer>
+    <img src="logo_syspan_sistemas_pb.png" width="240">
+</footer>
+</html>
